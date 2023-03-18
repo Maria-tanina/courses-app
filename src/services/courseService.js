@@ -5,17 +5,15 @@ const useApiService = () => {
 
     const _apiBase = 'http://api.wisey.app/';
     const _version = 'api/v1';
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmU5ZGM2ZS01ZmEyLTRkYjUtODMxMS1hNDZlYzUwMmI5NDIiLCJwbGF0Zm9ybSI6InN1YnNjcmlwdGlvbnMiLCJpYXQiOjE2Nzg3NDQ2NDMsImV4cCI6MTY3OTY0NDY0M30.nM6APsIfQVHq0CVjbv14aQWb6m9719_7LwatPZr1zwY'
-    const _baseOffset = 210;
-  
+  //`${_apiBase}${_version}/core/preview-courses`, 'GET', null, {'Content-Type': 'application/json','Authorization': `Bearer ${token}`}
 
     const getAllCourses = async () => {
-       const res = await request(`${_apiBase}${_version}/core/preview-courses`);
-       return res.courses.map(_transformCourses);
-    }
+       const res = await request(`http://localhost:8000/courses`);
+       return res.map(_transformCourses);
+    }    
     const getCourse = async (id) => {
-       const res = await request(`${_apiBase}${_version}/core/preview-courses/:${id}`);
-       return _transformCourses(res);
+       const res = await request(`http://localhost:8000/courses`);
+       return res.map(_transformCourses).filter(item => item.id === id)[0];
     }
     
     const _transformCourses = (course) => {
@@ -23,13 +21,29 @@ const useApiService = () => {
             id: course.id,
             title: course.title,
             launchDate: course.launchDate,
-            description:  course.description ? `${course.description.slice(0, 210)}...` : 'There is no description for this course',
-            image: course.previewImageLink
+            description:  course.description ? `${course.description}` : 'There is no description for this course',
+            image: course.previewImageLink + '/cover.webp',
+            lessonsCount: course.lessons.length,
+            skills: course.meta.skills ? course.meta.skills.map(skill => {
+                return(
+                  <span>{skill} </span>
+                )
+              }) : null,
+            rating: course.rating,
+            courseVideo: course.meta.courseVideoPreview ? course.meta.courseVideoPreview.link : '',
+            lessons: course.lessons,
+            lessonImage: `${course.lessons[0].previewImageLink}/lesson-${course.lessons[0].order}.webp`,
+            lessonStatus: course.lessons[0].status,
+            lessonTitle: course.lessons[0].title,
+            lessonDuration: course.lessons[0].duration,
+            lessonLink: course.lessons[0].link
+           
         }
     }
+   
  
    
-    return {process, getAllCourses, getCourse, clearError, setProcess}
+    return {process, getAllCourses, getCourse,  clearError, setProcess}
 } 
 
 export default useApiService;

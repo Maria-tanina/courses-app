@@ -1,0 +1,44 @@
+.locker {
+	background-color: #EEEEEE;
+	text-align: center;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	border-radius:10px;
+}
+
+#sociallocker-overlay {
+	background-color: rgba(0,0,0,0.6);
+	font-size: 20px;
+	font-weight: bold;
+	color: #ffffff;
+	transition: all 0.2s ease;
+}
+#sociallocker-overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+}
+.lesson {
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__image {
+		width: 50px;
+		margin-right: 15px;
+	}
+	&__number {
+		margin-bottom: 10px;
+	}
+}
+.list-group {
+	width: 40%;
+}
