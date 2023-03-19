@@ -26,9 +26,9 @@ const useApiService = () => {
             description:  course.description ? `${course.description}` : 'There is no description for this course',
             image: course.previewImageLink + '/cover.webp',
             lessonsCount: course.lessons.length,
-            skills: course.meta.skills ? course.meta.skills.map(skill => {
+            skills: course.meta.skills ? course.meta.skills.map((skill, i) => {
                 return(
-                  <span>{skill} </span>
+                  (course.meta.skills.length == i+1) ? <span>{skill}</span> : <span>{skill} | </span>
                 )
               }) : null,
             rating: course.rating,

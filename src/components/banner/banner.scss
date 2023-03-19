@@ -1,0 +1,30 @@
+.banner {
+    background-image: url('./woman.jpg');
+    height: 435px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: top right;
+    &__info {
+        position: absolute;
+        box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.08);
+        padding: 25px;
+        z-index: 10;
+        background-color: #fff;
+        left: 7.2rem;
+        top: 6.8rem;
+        max-width: 44rem;
+    }
+    &__title {
+        margin-bottom: 20px;
+    }
+    &__descr {
+        font-size: 1.4rem;
+    }
+    &__button {
+        position: absolute;
+        z-index: 10;
+        left: 7.2rem;
+        bottom: 5.5rem;
+    }
+}

@@ -1,4 +1,5 @@
 .courses {
+  padding: 50px 0;
     &__list {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -7,6 +8,13 @@
     &__img {
         width: 200px;
         height: 200px;
+    }
+    &__call {
+      font-weight: 600;
+      font-size: 2.2rem;
+      line-height: 1;
+      letter-spacing: -.05rem;
+      margin-bottom: 20px;
     }
 }
 
@@ -23,8 +31,8 @@
   .pagination a {
     padding: 6px 10px;
     border-radius: 5px;
-    border: 1px solid #6c7ac9;
-    color: #6c7ac9;
+    border: 1px solid #F1BC2E;
+    color: #F1BC2E;
   }
   
   .pagination__link {
@@ -32,12 +40,12 @@
   }
   
   .pagination__link--active a {
-    color: #fff;
-    background: #6c7ac9;
+    color: #000;
+    background: #F1BC2E;
   }
   
   .pagination__link--disabled a {
-    color: rgb(198, 197, 202);
-    border: 1px solid rgb(198, 197, 202);
+    color: #000;
+    border: 1px solid #000;
   }
   

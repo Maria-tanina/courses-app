@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import './appHeader.scss';
 import logo from './logo.svg'
 
@@ -7,10 +7,10 @@ function AppHeader() {
         <header className="header">
             <div className="container">
                 <div className="header__inner">
-                    <div className="header__logo"><img src={logo} alt="" /></div>
+                    <div className="header__logo"><Link to="/"><img src={logo} alt="logo" /></Link></div>
                     <nav className="header__nav">
                         <ul className="header__list">
-                            <li><NavLink end to="/" style={({isActive}) => ({color: isActive ? '#9f0013' : 'inherit'})}>Courses</NavLink></li>
+                            <li><NavLink end to="/" style={({isActive}) => ({color: isActive ? '#F1BC2E' : 'inherit'})}>Courses</NavLink></li>
                         </ul>
                     </nav>
                 </div>

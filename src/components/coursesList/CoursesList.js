@@ -62,11 +62,10 @@ function CoursesList() {
     }
      const offset = currentPage * PER_PAGE;
     function renderItems(arr) { 
-       
+       //cars.sort((a, b) => new Date(...a.initialRegistration.split('/').reverse()) - new Date(...b.initialRegistration.split('/').reverse()));
        const items = arr.slice(offset, offset + PER_PAGE).map((item, i) => {
         const url = JSON.parse(localStorage.getItem(`lesson-${item.id}`));
         const adress = url ? url.id : item.lessons[0].id;
-        const videoUrl = url ? url.link : item.lessons[0].link;
         return(
             <li key={item.id}>  
                 <Card>
@@ -90,7 +89,7 @@ function CoursesList() {
                     </Link>
                     <ListGroup className="list-group-flush">
                         <ListGroup.Item key="14wb4cv">Lessons: {item.lessonsCount}</ListGroup.Item>
-                        <ListGroup.Item key="2w65v5vcwv6">Skills: {item.skills}</ListGroup.Item>
+                        <ListGroup.Item key="2w65v5vcwv6">Skills: {item.skills ? item.skills.slice(0, 3) : null}...</ListGroup.Item>
                         <ListGroup.Item key="35v6w454v6wvb">
                         <StarsRating value={item.rating} disabled='true'/>
                         </ListGroup.Item>
@@ -103,10 +102,10 @@ function CoursesList() {
        })
        
        return (
-        
         <ul className="courses__list">
             {items}
         </ul>
+      
        )
 
     }
@@ -116,10 +115,11 @@ function CoursesList() {
         return setContent(process, () => renderItems(coursesList), newItemLoading);
     }, [process, currentPage])
     return(
-        <div className="courses">
+        <div className="courses" id="courses">
             <div className="container">
+                <p className="courses__call">Select a course and start learning</p>
                 {elements}
-                {  elements ?          
+                {           
                   <ReactPaginate
                   previousLabel={"← Previous"}
                   nextLabel={"Next →"}
@@ -130,7 +130,7 @@ function CoursesList() {
                   nextLinkClassName={"pagination__link"}
                   disabledClassName={"pagination__link--disabled"}
                   activeClassName={"pagination__link--active"}
-                /> : null
+                /> 
                 }
             </div>
         </div>

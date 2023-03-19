@@ -10,7 +10,7 @@
 }
 
 #sociallocker-overlay {
-	background-color: rgba(0,0,0,0.6);
+	background-color: rgba(0,0,0);
 	font-size: 20px;
 	font-weight: bold;
 	color: #ffffff;
@@ -38,6 +38,9 @@
 	&__number {
 		margin-bottom: 10px;
 	}
+}
+.course__lessons {
+	padding: 50px 0;
 }
 .course__lessons .list-group {
 	width: 40%;
