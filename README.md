@@ -25,4 +25,4 @@
 3. Скаче анімація завантаження сторінки та пагінація трохи скаче :)
 4. Якщо на сторінці з уроками відео 404, зациклюється анімація безкінечної прогрузки, не знайшла як через hls обробляти 404 та сповіщати про це користувача
 
-[Preview](https://github.com/Maria-tanina/courses-app/blob/master/preview.png)
+[Preview](https://github.com/Maria-tanina/courses-app/blob/master/prev.png)
