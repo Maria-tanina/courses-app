@@ -62,15 +62,19 @@ function CoursesList() {
     }
      const offset = currentPage * PER_PAGE;
     function renderItems(arr) { 
+       
        const items = arr.slice(offset, offset + PER_PAGE).map((item, i) => {
+        const url = JSON.parse(localStorage.getItem(`lesson-${item.id}`));
+        const adress = url ? url.id : item.lessons[0].id;
         return(
             <li key={item.id}>  
                 <Card>
-                    <Link to={`/lessons/${item.id}/${item.lessons[0].id}`}>
+                    <Link to={`/lessons/${item.id}/${adress}`}>
                        <ReactHlsPlayer
                                     poster={item.image}
                                     src={item.lessons[0].link}
                                     width="100%"
+                                    height="168px"
                                     onMouseOver={(e) =>{e.target.play(); e.target.muted = true}}
                                     onMouseOut={(e) =>{{e.target.pause(); e.target.muted = true}}}
                                 /> 
@@ -84,13 +88,12 @@ function CoursesList() {
                         </Card.Body>
                     </Link>
                     <ListGroup className="list-group-flush">
-                        <ListGroup.Item key="1">Lessons: {item.lessonsCount}</ListGroup.Item>
-                        <ListGroup.Item key="2">Skills: {item.skills}</ListGroup.Item>
-                        <ListGroup.Item key="3">
+                        <ListGroup.Item key="14wb4cv">Lessons: {item.lessonsCount}</ListGroup.Item>
+                        <ListGroup.Item key="2w65v5vcwv6">Skills: {item.skills}</ListGroup.Item>
+                        <ListGroup.Item key="35v6w454v6wvb">
                         <StarsRating value={item.rating} disabled='true'/>
                         </ListGroup.Item>
                     </ListGroup>
-                    
                 </Card>
                 </li>
             

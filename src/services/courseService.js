@@ -35,10 +35,7 @@ const useApiService = () => {
             courseVideo: course.meta.courseVideoPreview ? course.meta.courseVideoPreview.link : '',
             lessons: course.lessons,
             lessonImage: `${course.lessons[0].previewImageLink}/lesson-${course.lessons[0].order}.webp`,
-            lessonStatus: course.lessons[0].status,
-            lessonTitle: course.lessons[0].title,
-            lessonDuration: course.lessons[0].duration,
-            lessonLink: course.lessons[0].link
+            lessonStatus: course.lessons[0].status
            
         }
     }

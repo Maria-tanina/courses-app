@@ -11,16 +11,12 @@ const setContent = (process, Component, newItemLoading) => {
     switch(process) {
         case 'waiting':
             return <Spinner/>;
-            break;
         case 'loading': 
             return newItemLoading ? <Component/> : <Spinner/>;
-            break;
         case 'confirmed':
             return <Component/>;
-            break;
         case 'error': 
             return <Error/>;
-            break;
         default: 
             throw new Error('Error')
     }
@@ -46,7 +42,10 @@ function LessonPage() {
             .then((course) => getLesson(course, lessonId))
             .then(lesson => {
                 setLesson(lesson);
-               
+                if(lesson && Object.keys(course).length > 0) {
+                    localStorage.setItem(`lesson-${course.id}`, JSON.stringify(lesson));
+                    localStorage.setItem(`course-${course.id}`, JSON.stringify(course));
+                }
             })
             .then(() => setProcess('confirmed'));
         
@@ -102,6 +101,9 @@ const View = ({data, lesson, lessons}) => {
                                     src={lesson.link}
                                     controls={true}
                                     width="100%"
+                                    hlsConfig={{
+                                        fragLoadingMaxRetry: 1
+                                      }}
                                 /> : null} 
                     <div style={{'display': isDisplay}} id="sociallocker-overlay"><svg width={'30px'} style={{'marginRight': '20px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill='white' d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg>Unlock content with a social share.</div>
                     
