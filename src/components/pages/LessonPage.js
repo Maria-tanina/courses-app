@@ -59,8 +59,19 @@ function LessonPage() {
     }
    
     return(
-        <section className="course__lessons">
+        <section className="lessons">
             <div className="container">
+                <Card style={{ width: '100%', backgroundColor: 'rgba(241,188,46, 0.4)', marginBottom: '15px' }}>
+                    
+                    <Card.Body>
+                        <Card.Title style={{ fontWeight: '600'}}>{course.title}</Card.Title>
+                        <Card.Text>
+                        {course.description}
+                        </Card.Text>
+                        <Card.Text>Duration: {Math.ceil(course.duration/60)} minutes</Card.Text>
+                        <Card.Text>Skills: {course.skills}</Card.Text>
+                    </Card.Body>
+                </Card>
                 <div className="lesson__inner">
                     {setContent(process, () => <View playRef={playRef} data={course} lesson={lesson} lessons={course.lessons}/>, course)}
                 </div>
@@ -101,9 +112,9 @@ const View =  ({data, lesson, lessons}) => {
 
     return(
         <>
-            <Card style={{ width: "50%"}}>
+            <div className='video__wrapper' style={{ width: "50%"}}>
                 <div className="course__info">
-                    <Link to="/"><svg xmlns="http://www.w3.org/2000/svg" width='20px' viewBox="0 0 448 512"><path fill='white' d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></Link>
+                    <Link to="/"><svg xmlns="http://www.w3.org/2000/svg" width='16px' viewBox="0 0 448 512"><path fill='white' d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></Link>
                     <h5 className="course__title">{data.title}</h5>
                 </div>
                 <div className={isLocked}>
@@ -121,7 +132,7 @@ const View =  ({data, lesson, lessons}) => {
                     
                 </div>
                
-            </Card>
+            </div>
           
        { lessons ? <ListGroup defaultActiveKey={lessons[0].id}>
                 { lessons.map((lesson, i) => {

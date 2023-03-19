@@ -11,7 +11,7 @@
         padding: 25px;
         z-index: 10;
         background-color: #fff;
-        left: 7.2rem;
+        left: 10%;
         top: 6.8rem;
         max-width: 44rem;
     }
@@ -24,7 +24,37 @@
     &__button {
         position: absolute;
         z-index: 10;
-        left: 7.2rem;
+        left: 10%;
         bottom: 5.5rem;
+    }
+}
+
+
+@media(max-width: 550px) {
+    .banner {
+        height: 250px;
+        &__info {
+            padding: 15px;
+            max-width: 200px;
+            top: 45px;
+            left: 5%;
+        }
+        &__title {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        &__descr {
+            font-size: 14px;
+        }
+        &__button {
+            left: 5%;
+            bottom: 50px;
+            padding: 5px !important;
+            font-size: 16px !important;
+            line-height: 18px;
+        }
+    }
+    .pagination__link {
+        display: none;
     }
 }

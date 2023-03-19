@@ -24,6 +24,7 @@ const useApiService = () => {
             title: course.title,
             launchDate: course.launchDate,
             description:  course.description ? `${course.description}` : 'There is no description for this course',
+            duration: course.duration,
             image: course.previewImageLink + '/cover.webp',
             lessonsCount: course.lessons.length,
             skills: course.meta.skills ? course.meta.skills.map((skill, i) => {
