@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useParams, Link, NavLink} from 'react-router-dom';
+import { useParams, Link, NavLink, useLocation} from 'react-router-dom';
 import useApiService from '../../services/courseService';
 import Spinner from '../spinner/Spinner';
 import Error from '../error/Error';
@@ -30,11 +30,14 @@ function LessonPage() {
     const {process, setProcess, getCourse, getLesson, clearError} = useApiService();
     const {courseId} = useParams();
     const {lessonId} = useParams();
+    let location = useLocation();
     useEffect(() => {
         updateLesson();
       
     }, [courseId, lessonId])
+   const currentTime = useCallback(() => {
 
+    }, [location])
     const updateLesson = () => {
         clearError();
         getCourse(courseId)
@@ -51,7 +54,7 @@ function LessonPage() {
         
 
     }
-   
+
     const onCourseLoaded = (course) => {
         setCourse(course);
         return course;
@@ -72,6 +75,7 @@ function LessonPage() {
 const View = ({data, lesson, lessons}) => {
      const isDisplay = (data.lessonStatus === 'locked') ? 'flex' : 'none';
      const isLocked = (data.lessonStatus === 'locked') ? 'locker' : '';
+     const playerRef = useRef();
         const pictureOnPicture = (e) => {
             e.target.requestPictureInPicture();
         }      
@@ -80,10 +84,9 @@ const View = ({data, lesson, lessons}) => {
             e = e || window.event;
         
             if (e.shiftKey && e.ctrlKey) {
-        
-              document.getElementsByTagName('video')[0].playbackRate = 2;
+                playerRef.current.playbackRate = 2;
             } else if (e.altKey && e.ctrlKey) {
-                document.getElementsByTagName('video')[0].playbackRate = 0.5;
+                playerRef.current.playbackRate = 0.5;
             }
 
             return true;
@@ -97,6 +100,7 @@ const View = ({data, lesson, lessons}) => {
                 </div>
                 <div className={isLocked}>
                          {lesson ? <ReactHlsPlayer
+                                    playerRef={playerRef}
                                      onClick={pictureOnPicture}
                                     src={lesson.link}
                                     controls={true}

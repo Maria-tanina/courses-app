@@ -66,6 +66,7 @@ function CoursesList() {
        const items = arr.slice(offset, offset + PER_PAGE).map((item, i) => {
         const url = JSON.parse(localStorage.getItem(`lesson-${item.id}`));
         const adress = url ? url.id : item.lessons[0].id;
+        const videoUrl = url ? url.link : item.lessons[0].link;
         return(
             <li key={item.id}>  
                 <Card>
