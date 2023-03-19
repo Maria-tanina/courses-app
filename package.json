@@ -18,7 +18,6 @@
     "react-scripts": "5.0.1",
     "react-star-rate": "^0.2.0",
     "sass": "^1.59.2",
-    "typescript": "^5.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
