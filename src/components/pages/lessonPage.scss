@@ -39,6 +39,21 @@
 		margin-bottom: 10px;
 	}
 }
-.list-group {
+.course__lessons .list-group {
 	width: 40%;
+}
+.course__lessons .list-group a.active button {
+	background-color: transparent;
+}
+.course__info {
+	background-color: #1c1d1f;
+	height: 60px;
+	color: white;
+	display: flex;
+	align-items: center;
+	padding: 10px 10px 10px 30px;
+}
+
+.course__title {
+	margin-left: 20px;
 }

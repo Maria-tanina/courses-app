@@ -15,7 +15,9 @@ const useApiService = () => {
        const res = await request(`http://localhost:8000/courses`);
        return res.map(_transformCourses).filter(item => item.id === id)[0];
     }
-    
+    const getLesson = async (obj, id) => {
+      return obj.lessons.filter(lesson => lesson.id === id)[0];
+   }
     const _transformCourses = (course) => {
         return {
             id: course.id,
@@ -43,7 +45,7 @@ const useApiService = () => {
    
  
    
-    return {process, getAllCourses, getCourse,  clearError, setProcess}
+    return {process, getAllCourses, getCourse,getLesson,  clearError, setProcess}
 } 
 
 export default useApiService;

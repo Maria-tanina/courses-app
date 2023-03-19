@@ -6,6 +6,7 @@ import Error from '../error/Error';
 import {Card, Button, ListGroup} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import StarsRating from 'react-star-rate';
+import ReactHlsPlayer from "@ducanh2912/react-hls-player";
 import './coursesList.scss'
 
 
@@ -39,9 +40,6 @@ function CoursesList() {
 
     //pagination
     const [currentPage, setCurrentPage] = useState(0);
-  
-   
-
 
     useEffect(() => {
         onRequest()
@@ -63,13 +61,19 @@ function CoursesList() {
         setCurrentPage(selectedPage);
     }
      const offset = currentPage * PER_PAGE;
-    function renderItems(arr) {
+    function renderItems(arr) { 
        const items = arr.slice(offset, offset + PER_PAGE).map((item, i) => {
         return(
             <li key={item.id}>  
                 <Card>
-                    <Link to={`${item.id}`}>
-                        <Card.Img variant="top" src={item.image} />
+                    <Link to={`/lessons/${item.id}/${item.lessons[0].id}`}>
+                       <ReactHlsPlayer
+                                    poster={item.image}
+                                    src={item.lessons[0].link}
+                                    width="100%"
+                                    onMouseOver={(e) =>{e.target.play(); e.target.muted = true}}
+                                    onMouseOut={(e) =>{{e.target.pause(); e.target.muted = true}}}
+                                /> 
                         <Card.Body>
                             <Card.Title>{item.title}</Card.Title>
                             

@@ -11,7 +11,6 @@ function AppHeader() {
                     <nav className="header__nav">
                         <ul className="header__list">
                             <li><NavLink end to="/" style={({isActive}) => ({color: isActive ? '#9f0013' : 'inherit'})}>Courses</NavLink></li>
-                            <li><NavLink to="/lesson" style={({isActive}) => ({color: isActive ? '#9f0013' : 'inherit'})}>Lesson</NavLink></li>
                         </ul>
                     </nav>
                 </div>
