@@ -1,7 +1,4 @@
-![image_2023-03-19_22-42-26](https://user-images.githubusercontent.com/107557939/226207958-c55c7c0d-d5fd-4af7-b622-729e10fd93f1.png)
-
-
-
+![image_2023-03-19_22-42-26 (2)](https://user-images.githubusercontent.com/107557939/226208209-ca359400-8fa1-4c07-a509-62cfe4e4b202.png)
 Для того, щоб запустити проект, необхідно завантажити архів та прописати наступні команди:
 1. npm i
 2. npm start
